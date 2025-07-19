@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        Product::factory(5)->create([
+        Product::factory()->create([
             'name' => 'Sample Product',
             'description' => 'This is a sample product description.',
         ]);
