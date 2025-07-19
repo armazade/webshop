@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/laravel', [FrontendController::class, 'laravelFeatures']);
+Route::get('/products', [ProductController::class, 'products']);
 
 
 
