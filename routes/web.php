@@ -9,7 +9,9 @@ use Inertia\Inertia;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/laravel', [FrontendController::class, 'laravelFeatures']);
-Route::get('/products', [ProductController::class, 'products']);
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
 
 
