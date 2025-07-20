@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/laravel', [FrontendController::class, 'laravelFeatures']);
-Route::get('/products', [ProductController::class, 'products']);
+Route::get('/products', [ProductController::class, 'index']);
 
 
 
