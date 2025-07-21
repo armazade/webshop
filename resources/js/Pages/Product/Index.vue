@@ -13,8 +13,15 @@
                             :key="product.id"
                             class="p-4 border rounded shadow"
                         >
-                            <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-                            <p class="text-gray-700">{{ product.description }}</p>
+                            <Link
+                                :href="route('products.show', product.id)"
+                                class="block"
+                            >
+                                <h2 >
+                                    {{ product.name }}
+                                </h2>
+                                <p class="text-gray-700">{{ product.description }}</p>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -24,6 +31,8 @@
 </template>
 
 <script setup>
+import { Head, Link } from '@inertiajs/vue3'
+
 defineProps({
     products: Array
 });
