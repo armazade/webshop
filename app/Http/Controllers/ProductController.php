@@ -33,4 +33,11 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
+    public function show(Product $product)
+    {
+        return Inertia::render('Product/Show', [
+            'product' => $product,
+        ]);
+    }
+
 }
