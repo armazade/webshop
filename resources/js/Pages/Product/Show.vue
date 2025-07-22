@@ -11,6 +11,12 @@
                         <p class="text-gray-700">{{ product.description }}</p>
                     </div>
                     <Link
+                        :href="route('products.edit', product.id)"
+                        class="text-sm text-indigo-600 hover:underline"
+                    >
+                        Edit
+                    </Link>
+                    <Link
                         :href="route('products.index')"
                         class="inline-block mb-6 text-sm text-indigo-600 hover:underline"
                     >
