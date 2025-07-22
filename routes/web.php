@@ -9,10 +9,16 @@ use Inertia\Inertia;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/laravel', [FrontendController::class, 'laravelFeatures']);
+
+// #TODO these are admin routes --> refactor to admin routes admin/products/{product} + edit etc. Also rename the controller to AdminProductController if needed
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+// user routes --> product index and product show
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
