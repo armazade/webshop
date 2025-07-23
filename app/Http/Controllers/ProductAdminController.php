@@ -46,6 +46,7 @@ class ProductAdminController extends Controller
             'product' => $product,
         ]);
     }
+    
     public function update(ProductUpdateRequest $request, Product $product)
     {
         $validated = $request->validated();
