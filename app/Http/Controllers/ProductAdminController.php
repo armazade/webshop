@@ -29,7 +29,7 @@ class ProductAdminController extends Controller
         Product::create($request->validated());
 
         return redirect()
-            ->route('products.index')
+            ->route('admin.products.index')
             ->with('success', 'Product created successfully.');
     }
 
@@ -52,6 +52,6 @@ class ProductAdminController extends Controller
 
         $product->update(attributes: $validated);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
 }
