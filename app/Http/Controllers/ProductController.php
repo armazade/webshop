@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -17,41 +16,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return Inertia::render('Product/Create');
-    }
-
-    public function store(ProductUpdateRequest $request)
-    {
-        $validated = $request->validated();
-
-        Product::create($request->validated());
-
-        return redirect()
-            ->route('products.index')
-            ->with('success', 'Product created successfully.');
-    }
-
     public function show(Product $product)
     {
         return Inertia::render('Product/Show', [
             'product' => $product,
         ]);
-    }
-
-    public function edit(Product $product)
-    {
-        return Inertia::render('Product/Edit', [
-            'product' => $product,
-        ]);
-    }
-    public function update(ProductUpdateRequest $request, Product $product)
-    {
-        $validated = $request->validated();
-
-        $product->update(attributes: $validated);
-
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 }
