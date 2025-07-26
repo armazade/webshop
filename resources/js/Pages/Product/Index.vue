@@ -21,6 +21,7 @@
                                     {{ product.name }}
                                 </h2>
                                 <p class="text-gray-700">{{ product.description }}</p>
+                                <p class="text-gray-700">€ {{ product.price }}</p>
                             </Link>
                         </li>
                     </ul>
