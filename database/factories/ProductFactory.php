@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends Factory<Product>
  */
 class ProductFactory extends Factory
 {
@@ -19,6 +20,7 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->words(2, true),
             'description' => fake()->paragraph(),
+            'price' => fake()->randomFloat(2, 5, 500),
         ];
     }
 }

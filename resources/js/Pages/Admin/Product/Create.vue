@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
-import { Head, useForm } from '@inertiajs/vue3'
+import {Head, useForm} from '@inertiajs/vue3'
 
 const form = useForm({
     name: '',
@@ -48,6 +48,18 @@ const submit = () => {
                 ></textarea>
 
                 <InputError class="mt-2" :message="form.errors.description" />
+            </div>
+
+            <div>
+                <InputLabel for="price" value="Price in euros"/>
+                <textarea
+                    id="price"
+                    v-model="form.price"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    rows="4"
+                ></textarea>
+
+                <InputError :message="form.errors.price" class="mt-2"/>
             </div>
 
             <div class="flex justify-end">
