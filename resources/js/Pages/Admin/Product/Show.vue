@@ -9,6 +9,7 @@
 
                     <div class="p-4 border rounded shadow">
                         <p class="text-gray-700">{{ product.description }}</p>
+                        <p class="text-gray-700">€ {{ product.price }}</p>
                     </div>
                     <Link
                         :href="route('admin.products.edit', product.id)"

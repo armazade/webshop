@@ -36,6 +36,18 @@
                 <InputError class="mt-2" :message="form.errors.description" />
             </div>
 
+            <div>
+                <InputLabel for="price" value="Price in euros"/>
+                <TextInput
+                    id="price"
+                    v-model="form.price"
+                    class="mt-1 block w-full"
+                    required
+                    type="text"
+                />
+                <InputError :message="form.errors.price" class="mt-2"/>
+            </div>
+
             <div class="flex items-center gap-4">
                 <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
 
@@ -59,7 +71,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
+import {useForm} from '@inertiajs/vue3';
 
 const props = defineProps({
     product: Object,
@@ -68,9 +80,10 @@ const props = defineProps({
 const form = useForm({
     name: props.product.name,
     description: props.product.description,
+    price: props.product.price,
 });
 
 const submit = () => {
-    form.patch(route('products.update', props.product.id));
+    form.patch(route('admin.products.update', props.product.id));
 };
 </script>
