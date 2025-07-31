@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->decimal('total_price');
             $table->timestamp('ordered_at')->useCurrent();
             $table->string('status')->default('pending'); // options 'pending', 'paid', 'shipped', 'delivered', 'canceled' maybe enum later?
-            $table->timestamps(); // created_at / updated_at
+            $table->timestamps();
         });
     }
 
