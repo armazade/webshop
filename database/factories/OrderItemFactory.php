@@ -2,9 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +16,8 @@ class OrderItemFactory extends Factory
     {
 
         return [
-            'order_id' => Order::factory(),
-            'product_id' => Product::factory(),
+            'order_id' => null,
+            'product_id' => null,
             'product_name' => null,
             'price' => $this->faker->randomFloat(2, 10, 500),
             'quantity' => $this->faker->numberBetween(1, 5),
