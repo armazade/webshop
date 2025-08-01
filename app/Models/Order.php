@@ -12,12 +12,12 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'total_price',
-        'ordered_at',
         'status',
-    ];
-
-    protected $casts = [
-        'ordered_at' => 'datetime',
+        'street',
+        'house_number',
+        'city',
+        'postal_code',
+        'country',
     ];
 
     public function user()

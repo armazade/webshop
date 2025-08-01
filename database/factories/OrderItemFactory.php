@@ -16,13 +16,12 @@ class OrderItemFactory extends Factory
 
     public function definition(): array
     {
-        $product = Product::factory()->create(); // create a product to reference its fields
 
         return [
-            'order_id' => Order::factory(), // generates a new order unless overridden
-            'product_id' => $product->id,
-            'product_name' => $product->name,
-            'price' => $product->price,
+            'order_id' => Order::factory(),
+            'product_id' => Product::factory(),
+            'product_name' => null,
+            'price' => $this->faker->randomFloat(2, 10, 500),
             'quantity' => $this->faker->numberBetween(1, 5),
         ];
     }

@@ -12,11 +12,15 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->decimal('total_price');
-            $table->timestamp('ordered_at')->useCurrent();
-            $table->string('status')->default('pending'); // options 'pending', 'paid', 'shipped', 'delivered', 'canceled' maybe enum later?
-            $table->timestamps();
+            $table->string('street');
+            $table->string('house_number');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->string('country');
+            $table->string('status');
         });
     }
 

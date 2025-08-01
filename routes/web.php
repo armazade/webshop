@@ -12,13 +12,14 @@ Route::get('/', [FrontendController::class, 'index']);
 Route::get('/laravel', [FrontendController::class, 'laravelFeatures']);
 
 Route::prefix('admin')->name('admin.')->group(function () {
-Route::get('/products', [ProductAdminController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductAdminController::class, 'create'])->name('products.create');
-Route::post('/products', [ProductAdminController::class, 'store'])->name('products.store');
-Route::get('/products/{product}', [ProductAdminController::class, 'show'])->name('products.show');
-Route::get('/products/{product}/edit', [ProductAdminController::class, 'edit'])->name('products.edit');
-Route::patch('/products/{product}', [ProductAdminController::class, 'update'])->name('products.update');
-Route::get('/orders', [OrderAdminController::class, 'index'])->name('orders.index');
+    Route::get('/products', [ProductAdminController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductAdminController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductAdminController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}', [ProductAdminController::class, 'show'])->name('products.show');
+    Route::get('/products/{product}/edit', [ProductAdminController::class, 'edit'])->name('products.edit');
+    Route::patch('/products/{product}', [ProductAdminController::class, 'update'])->name('products.update');
+
+    Route::get('/orders', [OrderAdminController::class, 'index'])->name('orders.index');
 });
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');

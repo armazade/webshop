@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Order;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +15,13 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // automatically create a related user
+            'user_id' => null,
             'total_price' => $this->faker->randomFloat(2, 10, 500),
-            'ordered_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'street' => $this->faker->streetName(),
+            'house_number' => $this->faker->buildingNumber(),
+            'city' => $this->faker->city(),
+            'postal_code' => $this->faker->postcode(),
+            'country' => $this->faker->country(),
             'status' => $this->faker->randomElement(['pending', 'paid', 'shipped', 'delivered', 'canceled']),
         ];
     }

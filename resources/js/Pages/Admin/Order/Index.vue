@@ -13,10 +13,17 @@
                             :key="order.id"
                             class="p-4 border rounded shadow"
                         >
-                            <h2>Order #{{ order.id }}</h2>
+                            <h2 class="text-lg font-semibold">Order #{{ order.id }}</h2>
                             <p class="text-gray-700">Status: {{ order.status }}</p>
                             <p class="text-gray-700">Total: € {{ order.total_price }}</p>
-                            <p class="text-gray-700">Ordered at: {{ order.ordered_at }}</p>
+
+                            <div class="mt-2">
+                                <p class="font-medium">Shipping Address:</p>
+                                <p class="text-gray-700">
+                                    {{ order.street }} {{ order.house_number }},<br>
+                                    {{ order.postal_code }} {{ order.city }}, {{ order.country }}
+                                </p>
+                            </div>
                         </li>
                     </ul>
                 </div>
