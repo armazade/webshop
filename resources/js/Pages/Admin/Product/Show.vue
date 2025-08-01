@@ -8,6 +8,7 @@
                     <h1 class="text-2xl font-bold mb-4">{{ product.name }}</h1>
 
                     <div class="p-4 border rounded shadow">
+                        <img :src="imageUrl" alt="Product image" class="w-64"/>
                         <p class="text-gray-700">{{ product.description }}</p>
                         <p class="text-gray-700">€ {{ product.price }}</p>
                     </div>
@@ -34,6 +35,7 @@ import { Head, Link } from '@inertiajs/vue3'
 
 defineProps({
     product: Object,
+    imageUrl: String,
 })
 </script>
 
