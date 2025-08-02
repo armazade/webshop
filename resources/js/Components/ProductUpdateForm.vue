@@ -48,6 +48,12 @@
                 <InputError :message="form.errors.price" class="mt-2"/>
             </div>
 
+            <div>
+                <InputLabel for="image" value="Product Image"/>
+                <input id="image" type="file" @change="e => form.image = e.target.files[0]"/>
+                <InputError :message="form.errors.image" class="mt-2"/>
+            </div>
+
             <div class="flex items-center gap-4">
                 <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
 
@@ -81,6 +87,7 @@ const form = useForm({
     name: props.product.name,
     description: props.product.description,
     price: props.product.price,
+    image: null,
 });
 
 const submit = () => {

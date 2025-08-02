@@ -9,10 +9,14 @@ import {Head, useForm} from '@inertiajs/vue3'
 const form = useForm({
     name: '',
     description: '',
+    price: '',
+    image: null,
 })
 
 const submit = () => {
-    form.post(route('products.store'))
+    form.post(route('admin.products.store'), {
+        forceFormData: true,
+    })
 }
 </script>
 
@@ -52,14 +56,23 @@ const submit = () => {
 
             <div>
                 <InputLabel for="price" value="Price in euros"/>
-                <textarea
+
+                <input
                     id="price"
+                    min="0"
                     v-model="form.price"
+                    step="10.00"
+                    type="number"
                     class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                    rows="4"
-                ></textarea>
+                />
 
                 <InputError :message="form.errors.price" class="mt-2"/>
+            </div>
+
+            <div>
+                <InputLabel for="image" value="Product Image"/>
+                <input id="image" type="file" @change="e => form.image = e.target.files[0]"/>
+                <InputError :message="form.errors.image" class="mt-2"/>
             </div>
 
             <div class="flex justify-end">

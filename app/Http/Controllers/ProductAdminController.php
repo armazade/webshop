@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 
 class ProductAdminController extends Controller
 {
@@ -13,7 +12,7 @@ class ProductAdminController extends Controller
     {
         $products = Product::all();
         return Inertia::render('Admin/Product/Index', [
-            'products' => $products, 
+            'products' => $products,
         ]);
     }
 
@@ -26,7 +25,13 @@ class ProductAdminController extends Controller
     {
         $validated = $request->validated();
 
-        Product::create($request->validated());
+        $product = Product::create($validated);
+
+        if ($request->hasFile('image')) {
+            $product
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('images', 'public');
+        }
 
         return redirect()
             ->route('admin.products.index')
@@ -37,6 +42,7 @@ class ProductAdminController extends Controller
     {
         return Inertia::render('Admin/Product/Show', [
             'product' => $product,
+            'imageUrl' => $product->getFirstMediaUrl('images'),
         ]);
     }
 
@@ -46,12 +52,17 @@ class ProductAdminController extends Controller
             'product' => $product,
         ]);
     }
-    
+
     public function update(ProductUpdateRequest $request, Product $product)
     {
         $validated = $request->validated();
 
         $product->update(attributes: $validated);
+
+        if ($request->hasFile('image')) {
+            $product->clearMediaCollection('images');
+            $product->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
