@@ -14,7 +14,9 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.post(route('admin.products.store'))
+    form.post(route('admin.products.store'), {
+        forceFormData: true,
+    })
 }
 </script>
 
@@ -51,7 +53,7 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.description" />
             </div>
-
+            #TODO make input field for decimals
             <div>
                 <InputLabel for="price" value="Price in euros"/>
                 <textarea

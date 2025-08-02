@@ -42,7 +42,7 @@ class ProductAdminController extends Controller
     {
         return Inertia::render('Admin/Product/Show', [
             'product' => $product,
-            'imageUrl' => $product->getFirstMediaUrl('images', 'thumb'),
+            'imageUrl' => $product->getFirstMediaUrl('images'),
         ]);
     }
 
