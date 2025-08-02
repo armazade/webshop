@@ -53,18 +53,22 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.description" />
             </div>
-            #TODO make input field for decimals
+
             <div>
                 <InputLabel for="price" value="Price in euros"/>
-                <textarea
+
+                <input
                     id="price"
+                    min="0"
                     v-model="form.price"
+                    step="10.00"
+                    type="number"
                     class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                    rows="4"
-                ></textarea>
+                />
 
                 <InputError :message="form.errors.price" class="mt-2"/>
             </div>
+
 
             <div>
                 <InputLabel for="image" value="Product Image"/>

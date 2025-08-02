@@ -16,15 +16,7 @@ class Product extends Model implements HasMedia
         'description',
         'price',
     ];
-
-//    public function registerMediaConversions(Media $media = null): void
-//    {
-//        $this->addMediaConversion('thumb')
-//            ->width(200)
-//            ->height(200)
-//            ->sharpen(10);
-//    }
-
+    
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
