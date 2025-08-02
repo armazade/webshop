@@ -69,7 +69,6 @@ const submit = () => {
                 <InputError :message="form.errors.price" class="mt-2"/>
             </div>
 
-
             <div>
                 <InputLabel for="image" value="Product Image"/>
                 <input id="image" type="file" @change="e => form.image = e.target.files[0]"/>
