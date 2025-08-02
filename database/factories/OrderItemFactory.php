@@ -14,7 +14,6 @@ class OrderItemFactory extends Factory
 
     public function definition(): array
     {
-
         return [
             'order_id' => null,
             'product_id' => null,
