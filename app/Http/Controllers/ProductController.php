@@ -29,6 +29,7 @@ class ProductController extends Controller
     {
         return Inertia::render('Product/Show', [
             'product' => $product,
+            'imageUrl' => $product->getFirstMediaUrl('images')
         ]);
     }
 }

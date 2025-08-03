@@ -8,6 +8,9 @@
                     <h1 class="text-2xl font-bold mb-4">{{ product.name }}</h1>
 
                     <div class="p-4 border rounded shadow">
+                        <div v-if="imageUrl">
+                            <img :src="imageUrl" alt="Product image" class="mt-4 rounded shadow w-64 h-auto"/>
+                        </div>
                         <p class="text-gray-700">{{ product.description }}</p>
                         <p class="text-gray-700">€ {{ product.price }}</p>
                     </div>
