@@ -20,6 +20,10 @@
                                 <h2 >
                                     {{ product.name }}
                                 </h2>
+                                <div v-if="product.imageUrl">
+                                    <img :src="product.imageUrl" alt="Product image"
+                                         class="mt-4 rounded shadow w-64 h-auto"/>
+                                </div>
                                 <p class="text-gray-700">{{ product.description }}</p>
                                 <p class="text-gray-700">€ {{ product.price }}</p>
                             </Link>
