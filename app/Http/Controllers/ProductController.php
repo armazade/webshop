@@ -4,17 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'name' => $product->name,
+                'description' => $product->description,
+                'price' => $product->price,
+                'imageUrl' => $product->getFirstMediaUrl('images'),
+            ];
+        });
+
         return Inertia::render('Product/Index', [
-            'products' => $products, 
+            'products' => $products,
         ]);
     }
+
 
     public function show(Product $product)
     {
