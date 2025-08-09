@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use App\Services\ProductService;
 use Inertia\Inertia;
 
 class ProductAdminController extends Controller
@@ -55,15 +56,12 @@ class ProductAdminController extends Controller
 
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        $validated = $request->validated();
+        $validated = (object)$request->validated();
 
-        $product->update(attributes: $validated);
+        $product = ProductService::update($product, $validated);
 
-        if ($request->hasFile('image')) {
-            $product->clearMediaCollection('images');
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
-        }
-
-        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
+        return redirect()
+            ->route('admin.products.index')
+            ->with('success', 'Product updated successfully.');
     }
 }
